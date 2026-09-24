@@ -27,4 +27,13 @@ obj/myfilefunctions.o: src/myfilefunctions.c
 clean:
 	rm -f obj/*.o lib/libmyutils.so bin/client_dynamic
 
-.PHONY: all clean
+install:
+	mkdir -p /usr/local/bin
+	mkdir -p /usr/local/lib
+	mkdir -p /usr/local/share/man/man3
+	cp bin/client_dynamic /usr/local/bin/client
+	cp lib/libmyutils.so /usr/local/lib/
+	cp man/man3/*.3 /usr/local/share/man/man3/
+	ldconfig
+
+.PHONY: all clean install
